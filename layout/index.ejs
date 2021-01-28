@@ -1,0 +1,21 @@
+<% page.posts.each(function(item){ %>
+<div class="card mb-2">
+    <div class="card-body">
+        <h1 class="card-title">
+            <a href="<%- config.root %><%- item.path %>">
+                <%= item.title %>
+            </a>
+        </h1>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <time datetime="<%= item.date.toDate().toISOString() %>">
+                <%= item.date.format(config.date_format) %>
+            </time>
+        </h6>
+        <p class="card-text">
+            <%- item.excerpt %>
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+<% }); %>

@@ -1,0 +1,9 @@
+<% for (var link in site.data.links) { %>
+<div class="card">
+    <div class="card-body">
+        <a href="<%- site.data.links[link].link %> " id="href">
+            <%- link %>
+        </a>
+    </div>
+</div>
+<% } %>

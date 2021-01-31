@@ -2,9 +2,8 @@
   "name": "hexo-theme-ginkgo",
   "version": "1.0.0",
   "description": "Ginkgo Hexo Theme",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [
     "hexo",

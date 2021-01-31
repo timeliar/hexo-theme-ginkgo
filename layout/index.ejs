@@ -1,21 +1,56 @@
 <% page.posts.each(function(item){ %>
 <div class="card mb-2">
-    <div class="card-body">
-        <h1 class="card-title">
-            <a href="<%- config.root %><%- item.path %>">
-                <%= item.title %>
-            </a>
-        </h1>
-        <h6 class="card-subtitle mb-2 text-muted">
-            <time datetime="<%= item.date.toDate().toISOString() %>">
-                <%= item.date.format(config.date_format) %>
-            </time>
-        </h6>
-        <p class="card-text">
-            <%- item.excerpt %>
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+  <header class="card-header">
+    <p class="is-size-4 card-header-title">
+      <a href="<%- url_for(item.path) %>" style="text-decoration: none"
+        ><%- item.title %></a
+      >
+    </p>
+    <span class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </span>
+  </header>
+  <div class="card-content">
+    <p class="is-size-7 mt-2">
+      <%if(item.excerpt) {%> <%- strip_html(item.excerpt) %> <%}%>
+      <a href="<%- url_for(item.path) %>">[<%- __('read_more') %>]</a>
+    </p>
+    <div class="mt-2">
+      <% item.tags.forEach(function(tag) { %>
+      <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
+        <span class="icon">
+          <i class="fas fa-tag"></i>
+        </span>
+        <%- tag.name %>
+      </a>
+      <% }) %>
     </div>
+  </div>
+  <footer class="card-footer p-1">
+    <div class="columns" style="width: 100%">
+      <div class="column is-justify-content-flex-start">
+        <button class="button is-white">
+          <time><%- date(item.date,config.date_format) %> </time>
+        </button>
+      </div>
+      <div class="column is-justify-content-flex-end">
+        <% item.categories.forEach(function(cate) { %>
+        <a href="<%- url_for(cate.path) %>" class="button is-white">
+          <%- cate.name %>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+  </footer>
 </div>
 <% }); %>
+
+<!-- Index nav -->
+<% if (page.total > 1) { %>
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <%- bulma_paginator({ prev_text: __('prev'), next_text: __('next'), space:
+  '&hellip;' }) %>
+</nav>
+<% } %>

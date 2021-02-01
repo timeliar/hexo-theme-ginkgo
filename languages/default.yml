@@ -1,11 +1,12 @@
 categories: Categories
+category: "Category: "
 search: Search
 tags: Tags
-tagcloud: Tag Cloud
+tag: "Tag: "
 prev: Prev
 next: Next
 comment: Comments
-archive: Archives
+archives: Archives
 recent_posts: Recent Posts
 links: Links
 gallery: Gallery

@@ -1,12 +1,27 @@
-<div class="timeline is-centered">
+<div class="timeline">
   <header class="timeline-header">
+    <% if(is_tag()) { %>
+    <!-- if current page is tag -->
+    <span class="tag is-medium is-info"> <%- __('tag')+page.tag %> </span>
+    <!-- else category -->
+    <% } else if(is_category()) { %>
+    <!-- show category -->
+    <span class="tag is-medium is-danger">
+      <%- __('category')+page.category %>
+    </span>
+    <!-- end -->
+    <% } else { %>
+    <!-- show latest -->
     <span class="tag is-medium is-primary"> <%- __('latest') %> </span>
+    <!-- end -->
+    <% } %>
   </header>
-  <% let curYear = '';let counter = 0; if (site.posts.length) { -%>
+  <div class="timeline-item"></div>
+  <% let curYear = '';let counter = 0; if (page.posts.length) { -%>
   <!-- loop start -->
-  <% site.posts.sort('date', -1).limit(site.posts.length).each(function(post){%>
+  <% page.posts.sort('date', -1).limit(page.posts.length).each(function(post){%>
   <!-- insert year tag  -->
-  <% if(curYear !== date(post.date, 'YYYY') && counter > 0) { %>
+  <% if(curYear !== date(post.date, 'YYYY')) { %>
   <!-- current year  -->
   <%curYear = date(post.date,'YYYY')%>
   <header class="timeline-header">
@@ -14,8 +29,6 @@
   </header>
   <% } %>
   <!-- insert year end  -->
-  <!-- loop counter  -->
-  <% counter ++%>
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
@@ -32,3 +45,14 @@
     <span class="tag is-medium is-primary"> <%- __('earliest') %> </span>
   </div>
 </div>
+
+<% if (page.total > 1) { %>
+<nav
+  class="pagination is-centered mt-4"
+  role="navigation"
+  aria-label="pagination"
+>
+  <%- bulma_paginator({ prev_text: __('prev'), next_text: __('next'), space:
+  '&hellip;' }) %>
+</nav>
+<% } %>

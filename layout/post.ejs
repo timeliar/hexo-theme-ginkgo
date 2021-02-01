@@ -1,1 +1,19 @@
-<%- page.title %> 
+<div class="card">
+  <header class="card-header">
+    <p class="is-size-2 card-header-title"><%- page.title %></p>
+  </header>
+  <div class="card-content">
+    <div class="content"><%- page.content %></div>
+  </div>
+  <footer class="card-footer p-1 is-justify-content-flex-end">
+    <button class="button is-white has-text-grey">
+      <time><%- date(page.date,config.date_format) %> </time>
+    </button>
+  </footer>
+</div>
+<article class="panel is-success mt-4">
+  <p class="panel-heading"><%- __('comment') %></p>
+  <div class="panel-block">
+    开发中，敬请期待。。。
+  </div>
+</article>

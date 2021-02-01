@@ -44,34 +44,63 @@
   </footer>
   <% } %>
 </div>
-<% if (!is_post()) { %>
-<div class="card mt-4">
-  <header class="card-header" style="box-shadow: none">
-    <p class="is-size-5 card-header-title"><%- __('tagcloud') %></p>
-  </header>
-  <div class="card-content">
-    <% site.tags.forEach(function(tag) { %>
-    <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
-      <span class="icon">
-        <i class="fas fa-tag"></i>
-      </span>
-      <%- tag.name %>
-    </a>
-    <% }) %>
-  </div>
-</div>
-<div class="card mt-4">
-  <header class="card-header" style="box-shadow: none">
-    <p class="is-size-5 card-header-title"><%- __('categories') %></p>
-  </header>
-  <div class="card-content">
-    <div class="menu">
-      <ul class="menu-list">
-        <% site.categories.forEach(function(cate) { %>
-        <li><a href="<%- url_for(cate.path) %>"> <%- cate.name %> </a></li>
-        <% }) %>
-      </ul>
+<div class="is-sticky">
+  <% if (!is_post()) { %>
+  <div class="card mt-4">
+    <header class="card-header" style="box-shadow: none">
+      <p class="is-size-5 card-header-title"><%- __('tags') %></p>
+    </header>
+    <div class="card-content">
+      <% site.tags.forEach(function(tag) { %>
+      <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
+        <span class="icon">
+          <i class="fas fa-tag"></i>
+        </span>
+        <%- tag.name %>
+      </a>
+      <% }) %>
     </div>
   </div>
+  <div class="card mt-4">
+    <header class="card-header" style="box-shadow: none">
+      <p class="is-size-5 card-header-title"><%- __('categories') %></p>
+    </header>
+    <div class="card-content">
+      <div class="menu">
+        <ul class="menu-list">
+          <% site.categories.forEach(function(cate) { %>
+          <li><a href="<%- url_for(cate.path) %>"> <%- cate.name %> </a></li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+  <div class="card mt-4">
+    <div class="card-content">
+      <%- toc(page.content,{list_number:false,class:'menu-list'}) %>
+    </div>
+  </div>
+  <div class="card mt-2">
+    <div class="card-content">
+      <div>
+        <% page.tags.forEach(function(tag) { %>
+        <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
+          <span class="icon">
+            <i class="fas fa-tag"></i>
+          </span>
+          <%- tag.name %>
+        </a>
+        <% }) %>
+      </div>
+      <div class="mt-2">
+        <% page.categories.forEach(function(cate) { %>
+        <a href="<%- url_for(cate.path) %>" class="tag is-danger icon-text">
+          <%- cate.name %>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </div>
-<% } %>

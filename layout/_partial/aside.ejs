@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img
+            src="<%- url_for(config.avatar) %> "
+            alt="<%- config.author %>"
+          />
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><%- config.author %></p>
+        <p class="subtitle is-6">
+          <% if(config.subtitle) { %> <%- config.subtitle %> <% } %>
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <% if(config.description) { %> <%- config.description %> <% } %>
+    </div>
+  </div>
+  <% if(theme.social) { %>
+  <footer class="card-footer">
+    <!-- email -->
+    <% if(theme.social.email) { %>
+    <a href="mailto:<%- theme.social.email %>" class="card-footer-item">
+      <span class="icon"><i class="fas fa-lg fa-envelope"></i></span>
+    </a>
+    <% } %>
+    <!-- github  -->
+    <% if(theme.social.github) { %>
+    <a href="<%- url_for(theme.social.github) %>" class="card-footer-item">
+      <span class="icon"><i class="fab fa-lg fa-github-square"></i></span>
+    </a>
+    <% } %>
+    <!-- twitter  -->
+    <% if(theme.social.twitter) { %>
+    <a href="<%- url_for(theme.social.twitter) %>" class="card-footer-item">
+      <span class="icon"><i class="fab fa-lg fa-twitter-square"></i></span>
+    </a>
+    <% } %>
+  </footer>
+  <% } %>
+</div>
+<% if (!is_post()) { %>
+<div class="card mt-4">
+  <header class="card-header" style="box-shadow: none">
+    <p class="is-size-5 card-header-title"><%- __('tagcloud') %></p>
+  </header>
+  <div class="card-content">
+    <% site.tags.forEach(function(tag) { %>
+    <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <%- tag.name %>
+    </a>
+    <% }) %>
+  </div>
+</div>
+<div class="card mt-4">
+  <header class="card-header" style="box-shadow: none">
+    <p class="is-size-5 card-header-title"><%- __('categories') %></p>
+  </header>
+  <div class="card-content">
+    <div class="menu">
+      <ul class="menu-list">
+        <% site.categories.forEach(function(cate) { %>
+        <li><a href="<%- url_for(cate.path) %>"> <%- cate.name %> </a></li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% } %>

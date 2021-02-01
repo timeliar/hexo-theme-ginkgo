@@ -1,23 +1,44 @@
 <% page.posts.each(function(item){ %>
-<div class="card mb-2">
-  <header class="card-header">
+<div class="card mb-4" style="overflow: visible">
+  <header class="card-header" style="box-shadow: none">
     <p class="is-size-4 card-header-title">
-      <a href="<%- url_for(item.path) %>" style="text-decoration: none"
-        ><%- item.title %></a
-      >
+      <a href="<%- url_for(item.path) %>"> <%- item.title %> </a>
     </p>
-    <span class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </span>
+    <% if(item.categories && item.categories.length) { %>
+    <div class="dropdown">
+      <div
+        class="card-header-icon dropdown-trigger"
+        trigger-id="<%- item._id %> "
+      >
+        <button
+          class="button is-white"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu3"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" trigger-id="<%- item._id %>" role="menu">
+        <div class="dropdown-content">
+          <% item.categories.forEach(function(cate) { %>
+          <a href="<%- url_for(cate.path) %>" class="dropdown-item">
+            <%- cate.name %>
+          </a>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <% } %>
   </header>
   <div class="card-content">
-    <p class="is-size-7 mt-2">
+    <p class="is-size-6">
       <%if(item.excerpt) {%> <%- strip_html(item.excerpt) %> <%}%>
       <a href="<%- url_for(item.path) %>">[<%- __('read_more') %>]</a>
     </p>
-    <div class="mt-2">
+    <% if(item.tags && item.tags.length) { %>
+    <div class="mt-2 is-align-content-end">
       <% item.tags.forEach(function(tag) { %>
       <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
         <span class="icon">
@@ -27,22 +48,12 @@
       </a>
       <% }) %>
     </div>
+    <% } %>
   </div>
   <footer class="card-footer p-1">
-    <div class="columns" style="width: 100%">
-      <div class="column is-justify-content-flex-start">
-        <button class="button is-white">
-          <time><%- date(item.date,config.date_format) %> </time>
-        </button>
-      </div>
-      <div class="column is-justify-content-flex-end">
-        <% item.categories.forEach(function(cate) { %>
-        <a href="<%- url_for(cate.path) %>" class="button is-white">
-          <%- cate.name %>
-        </a>
-        <% }) %>
-      </div>
-    </div>
+    <button class="button is-white has-text-grey">
+      <time><%- date(item.date,config.date_format) %> </time>
+    </button>
   </footer>
 </div>
 <% }); %>
@@ -54,3 +65,9 @@
   '&hellip;' }) %>
 </nav>
 <% } %>
+
+<script>
+  $(".dropdown-trigger").click(function () {
+    $(this).parent().toggleClass("is-active");
+  });
+</script>

@@ -2,12 +2,13 @@ categories: Categories
 search: Search
 tags: Tags
 tagcloud: Tag Cloud
-tweets: Tweets
 prev: Prev
 next: Next
 comment: Comments
 archive: Archives
-archive_b: "Archives: %s"
-page: Page %d
 recent_posts: Recent Posts
+links: Links
+gallery: Gallery
 read_more: Read More
+latest: Latest
+earliest: Earliest

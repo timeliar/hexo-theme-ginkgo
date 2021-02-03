@@ -2,3 +2,19 @@
   position: sticky;
   top: 60px;
 }
+
+.token.number {
+  color: rgb(114, 154, 214) !important;
+  align-items: unset !important;
+  background-color: unset !important;
+  border-radius: unset !important;
+  display: unset !important;
+  font-size: unset !important;
+  height: unset !important;
+  justify-content: unset !important;
+  margin-right: unset !important;
+  min-width: unset !important;
+  padding: unset !important;
+  text-align: unset !important;
+  vertical-align: unset !important;
+}

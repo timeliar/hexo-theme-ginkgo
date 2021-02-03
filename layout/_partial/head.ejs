@@ -50,6 +50,15 @@
   %>
   <!-- custom style -->
   <%- css('css/custom.css') %>
+
+  <!-- prism enable -->
+  <% if(config.prismjs.enable) { %>
+  <!-- prism theme -->
+  <%-
+  css('https://cdn.bootcdn.net/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css')
+  %>
+  <!-- prism theme end -->
+  <% } %>
   <!-- jauery lib -->
   <%- js('https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js') %>
   <!--[if lt IE 9

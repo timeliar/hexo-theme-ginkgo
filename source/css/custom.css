@@ -18,3 +18,26 @@
   text-align: unset !important;
   vertical-align: unset !important;
 }
+
+.token.tag {
+  align-items: unset !important;
+  background-color: unset !important;
+  border-radius: unset !important;
+  display: unset !important;
+  font-size: unset !important;
+  height: unset !important;
+  justify-content: unset !important;
+  margin-right: unset !important;
+  min-width: unset !important;
+  padding: unset !important;
+  text-align: unset !important;
+  vertical-align: unset !important;
+}
+
+.menu-list-level-2,
+.menu-list-level-3,
+.menu-list-level-4,
+.menu-list-level-5,
+.menu-list-level-6 {
+  margin-left: 0.5em;
+}

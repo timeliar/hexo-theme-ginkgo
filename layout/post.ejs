@@ -3,7 +3,7 @@
     <p class="is-size-2 card-header-title"><%- page.title %></p>
   </header>
   <div class="card-content">
-    <div class="content"><%- page.content %></div>
+    <div class="content" id="post-main-content"><%- page.content %></div>
   </div>
   <footer class="card-footer is-justify-content-flex-end">
     <button class="button is-white has-text-grey">
@@ -13,7 +13,13 @@
 </div>
 <article class="panel is-success mt-4">
   <p class="panel-heading"><%- __('comment') %></p>
-  <div class="panel-block">
-    开发中，敬请期待。。。
-  </div>
+  <div class="panel-block">开发中，敬请期待。。。</div>
 </article>
+
+<%- css('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.css') %>
+<%- js('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.js') %>
+<script>
+  $(function () {
+    const gallery = new Viewer(document.getElementById("post-main-content"));
+  });
+</script>

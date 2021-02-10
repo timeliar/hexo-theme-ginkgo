@@ -1,11 +1,11 @@
 <% page.posts.each(function(item){ %>
-<div class="card mb-4" style="overflow: visible">
+<div class="card mb-4">
   <header class="card-header" style="box-shadow: none">
     <p class="is-size-4 card-header-title">
       <a href="<%- url_for(item.path) %>"> <%- item.title %> </a>
     </p>
     <% if(item.categories && item.categories.length) { %>
-    <div class="dropdown">
+    <div class="dropdown is-right">
       <div
         class="card-header-icon dropdown-trigger"
         trigger-id="<%- item._id %> "

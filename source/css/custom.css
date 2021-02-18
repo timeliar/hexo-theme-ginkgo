@@ -41,3 +41,8 @@
 .menu-list-level-6 {
   margin-left: 0.5em;
 }
+
+.columns{
+  margin-left: unset !important;
+  margin-right: unset !important;
+}

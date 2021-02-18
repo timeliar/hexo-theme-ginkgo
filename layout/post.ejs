@@ -11,11 +11,13 @@
     </button>
   </footer>
 </div>
+<% if(page.comment) { %>
 <article class="panel is-success mt-4">
   <p class="panel-heading"><%- __('comment') %></p>
   <div class="panel-block">开发中，敬请期待。。。</div>
 </article>
-
+<% } %>
+<!-- 图片预览 -->
 <%- css('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.css') %>
 <%- js('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.js') %>
 <script>

@@ -1,51 +1,55 @@
-<div class="timeline">
-  <header class="timeline-header">
-    <% if(is_tag()) { %>
-    <!-- if current page is tag -->
-    <span class="tag is-medium is-info"> <%- __('tag')+page.tag %> </span>
-    <!-- else category -->
-    <% } else if(is_category()) { %>
-    <!-- show category -->
-    <span class="tag is-medium is-danger">
-      <%- __('category')+page.category %>
-    </span>
-    <!-- end -->
-    <% } else { %>
-    <!-- show latest -->
-    <span class="tag is-medium is-primary"> <%- __('latest') %> </span>
-    <!-- end -->
-    <% } %>
-  </header>
-  <div class="timeline-item"></div>
-  <% let curYear = '';let counter = 0; if (page.posts.length) { -%>
-  <!-- loop start -->
-  <% page.posts.sort('date', -1).limit(page.posts.length).each(function(post){%>
-  <!-- insert year tag  -->
-  <% if(curYear !== date(post.date, 'YYYY')) { %>
-  <!-- current year  -->
-  <%curYear = date(post.date,'YYYY')%>
-  <header class="timeline-header">
-    <span class="tag is-primary"><%= curYear %></span>
-  </header>
-  <% } %>
-  <!-- insert year end  -->
-  <div class="timeline-item">
-    <div class="timeline-marker"></div>
-    <div class="timeline-content">
-      <p class="heading"><%= date(post.date, config.date_format) %></p>
-      <p>
-        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
-      </p>
+<div class="card">
+  <div class="card-content">
+    <div class="timeline">
+      <header class="timeline-header">
+        <% if(is_tag()) { %>
+        <!-- if current page is tag -->
+        <span class="tag is-medium is-info"> <%- __('tag')+page.tag %> </span>
+        <!-- else category -->
+        <% } else if(is_category()) { %>
+        <!-- show category -->
+        <span class="tag is-medium is-danger">
+          <%- __('category')+page.category %>
+        </span>
+        <!-- end -->
+        <% } else { %>
+        <!-- show latest -->
+        <span class="tag is-medium is-primary"> <%- __('latest') %> </span>
+        <!-- end -->
+        <% } %>
+      </header>
+      <div class="timeline-item"></div>
+      <% let curYear = '';let counter = 0; if (page.posts.length) { -%>
+      <!-- loop start -->
+      <% page.posts.sort('date',
+      -1).limit(page.posts.length).each(function(post){%>
+      <!-- insert year tag  -->
+      <% if(curYear !== date(post.date, 'YYYY')) { %>
+      <!-- current year  -->
+      <%curYear = date(post.date,'YYYY')%>
+      <header class="timeline-header">
+        <span class="tag is-primary"><%= curYear %></span>
+      </header>
+      <% } %>
+      <!-- insert year end  -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <p class="heading"><%= date(post.date, config.date_format) %></p>
+          <p>
+            <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+          </p>
+        </div>
+      </div>
+      <% }) %>
+      <!-- loop end  -->
+      <% } %>
+      <div class="timeline-header">
+        <span class="tag is-medium is-primary"> <%- __('earliest') %> </span>
+      </div>
     </div>
   </div>
-  <% }) %>
-  <!-- loop end  -->
-  <% } %>
-  <div class="timeline-header">
-    <span class="tag is-medium is-primary"> <%- __('earliest') %> </span>
-  </div>
 </div>
-
 <% if (page.total > 1) { %>
 <nav
   class="pagination is-centered mt-4"

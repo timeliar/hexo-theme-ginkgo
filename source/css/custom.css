@@ -46,3 +46,6 @@
   margin-left: unset !important;
   margin-right: unset !important;
 }
+#comment-container {
+  width: 100% !important;
+}

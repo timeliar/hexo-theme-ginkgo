@@ -6,3 +6,15 @@ social:
   email: timeliar.lee@gmail.com
   github: https://github.com/timeliar
   twitter: https://twitter.com/time_liar
+comment:
+  gitalk:
+    enable: false
+    clientId: ##
+    secret: ##
+    repo: ##
+    owner: ##
+  valine:
+    enable: true
+    appId: yCmSu1mkY5Ff2BAvv5cu8sMO-gzGzoHsz
+    appKey: W5SOzhqwQORyvSj4OGFiD5yH
+    

@@ -11,53 +11,13 @@
     </button>
   </footer>
 </div>
-<% if(page.comment) { %>
-<article class="panel is-success mt-4">
-  <p class="panel-heading"><%- __('comment') %></p>
-  <div class="panel-block">
-    <div id="comment-container"></div>
-  </div>
-</article>
-<% } %>
 <!-- 图片预览 -->
 <%- css('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.css') %>
 <%- js('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.js') %>
+
 <script>
   $(function () {
     const gallery = new Viewer(document.getElementById("post-main-content"));
   });
 </script>
-
-<% if(page.comment && theme.comment) { %>
-<!-- gitalk  -->
-<% if(theme.comment.gitalk && theme.comment.gitalk.enable){ %>
-<!-- gitalk css -->
-<%- css('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css') %>
-<!-- gitalk js -->
-<%- js('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js') %>
-<script>
-  const gitalk = new Gitalk({
-    clientID: "<%- theme.comment.gitalk.clientId %>",
-    clientSecret: "<%- theme.comment.gitalk.secret %>",
-    repo: "<%- theme.comment.gitalk.repo %>",
-    owner: "<%- theme.comment.gitalk.owner %>",
-    admin: ["<%- theme.comment.gitalk.owner %>"],
-    id: location.pathname, // Ensure uniqueness and length less than 50
-    distractionFreeMode: false, // Facebook-like distraction free mode
-  });
-  gitalk.render("comment-container");
-</script>
-<% } else if (theme.comment.valine && theme.comment.valine.enable) { %>
-<!-- valine js -->
-<%- js('//unpkg.com/valine/dist/Valine.min.js') %>
-<script>
-  new Valine({
-    el: "#comment-container",
-    appId: "<%- theme.comment.valine.appId %>",
-    appKey: "<%- theme.comment.valine.appKey %>",
-  });
-</script>
-<!-- valine  -->
-<% } %>
-<!-- gitalk  -->
-<% } %>
+<%- partial('_partial/comment') %>

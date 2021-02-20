@@ -41,6 +41,12 @@
       <span class="icon"><i class="fab fa-lg fa-twitter-square"></i></span>
     </a>
     <% } %>
+    <!-- twitter  -->
+    <% if(theme.social.about) { %>
+    <a href="<%- url_for(theme.social.about) %>" class="card-footer-item">
+      <span class="icon"><i class="fas fa-lg fa-id-card"></i></span>
+    </a>
+    <% } %>
   </footer>
   <% } %>
 </div>

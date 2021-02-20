@@ -1,0 +1,16 @@
+social:
+  email: # email
+  github: # github page link or false
+  twitter: # twitter page link or false
+  about: # about page link or false
+comment:
+  gitalk:
+    enable: false
+    clientId: ##
+    secret: ##
+    repo: ##
+    owner: ##
+  valine:
+    enable: true
+    appId: #
+    appKey: #

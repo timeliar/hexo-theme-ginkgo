@@ -5,7 +5,8 @@ menu:
 social:
   email: timeliar.lee@gmail.com
   github: https://github.com/timeliar
-  twitter: https://twitter.com/time_liar
+  twitter: false
+  wechat: false
 comment:
   gitalk:
     enable: false

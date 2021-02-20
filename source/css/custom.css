@@ -39,7 +39,11 @@
 .menu-list-level-4,
 .menu-list-level-5,
 .menu-list-level-6 {
-  margin-left: 0.5em;
+  padding-left: 0.5em;
+}
+
+ol.menu-list,ol.menu-list-child{
+  list-style-type: none !important;
 }
 
 .columns{
@@ -48,4 +52,11 @@
 }
 #comment-container {
   width: 100% !important;
+}
+
+.v[data-class=v] .vwrap {
+  border: 2px solid #aaaaaa !important;
+}
+.v[data-class=v] .vbtn {
+  border: 2px solid #bbbbbb !important;
 }

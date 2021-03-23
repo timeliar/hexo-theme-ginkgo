@@ -2,10 +2,24 @@
 <html lang="zh" class="has-navbar-fixed-top">
   <%- partial('_partial/head') %>
   <body>
+    <script>
+      const LOCAL = {
+        quiz: {
+          choice: "<%- __('quiz.choice') %>",
+          multiple: "<%- __('quiz.multiple') %>",
+          true_false: "<%- __('quiz.true_false') %>",
+          essay: "<%- __('quiz.essay') %>",
+          gap_fill: "<%- __('quiz.gap_fill') %>",
+          mistake: "<%- __('quiz.mistake') %>",
+        },
+      };
+    </script>
     <%- partial('_partial/header') %>
     <main class="container mt-4">
       <div class="columns is-flex-direction-row">
-        <div class="column is-three-quarters is-justify-content-center"><%- body %></div>
+        <div class="column is-three-quarters is-justify-content-center">
+          <%- body %>
+        </div>
         <aside class="column"><%- partial('_partial/aside') %></aside>
       </div>
     </main>

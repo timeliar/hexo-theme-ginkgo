@@ -1,3 +1,4 @@
+index: 首页
 categories: 分类
 category: 分类：
 search: 搜索
@@ -13,3 +14,10 @@ gallery: 相册集
 read_more: 阅读全文
 latest: 最新
 earliest: 最早
+quiz:
+  choice: 单选题
+  multiple: 多选题
+  true_false: 判断题
+  essay: 问答题
+  gap_fill: 填空题
+  mistake: 错题备注

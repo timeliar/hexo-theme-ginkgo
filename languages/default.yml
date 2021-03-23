@@ -1,3 +1,4 @@
+index: Index
 categories: Categories
 category: "Category: "
 search: Search
@@ -13,3 +14,10 @@ gallery: Gallery
 read_more: Read More
 latest: Latest
 earliest: Earliest
+quiz:
+  choice: Multiple Choice
+  multiple: Multiple Answer
+  true_false: True/False
+  essay: Questions
+  gap_fill: Gap Filling
+  mistake: Wrong Answer

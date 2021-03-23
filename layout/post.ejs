@@ -2,7 +2,7 @@
   <header class="card-header">
     <p class="is-size-2 card-header-title"><%- page.title %></p>
   </header>
-  <div class="card-content">
+  <div class="card-content" id="artDetail">
     <div class="content" id="post-main-content"><%- page.content %></div>
   </div>
   <footer class="card-footer is-justify-content-flex-end">
@@ -15,6 +15,18 @@
 <%- css('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.css') %>
 <%- js('https://cdn.bootcdn.net/ajax/libs/viewerjs/1.7.1/viewer.min.js') %>
 <%- js('js/scroll.js') %>
+<!-- dom -->
+<%- js('js/dom.js') %>
+<!-- beauty -->
+<%- js('js/post-beauty.js') %>
+<!-- 代码块功能依赖 -->
+<%- js('/js/codeBlock/codeBlockFuction.js') %>
+<!-- 代码语言 -->
+<%- js('/js/codeBlock/codeLang.js') %>
+<!-- 代码块复制 -->
+<%- js('/js/codeBlock/codeCopy.js') %>
+<!-- 代码块收缩 -->
+<%- js('/js/codeBlock/codeShrink.js') %>
 
 <script>
   $(function () {

@@ -1,0 +1,172 @@
+$alphabet = 'A.', 'B.', 'C.', 'D.', 'E.', 'F.', 'G.', 'H.', 'I.', 'J.', 'K.', 'L.', 'M.', 'N.', 'O.', 'P.', 'Q.', 'R.', 'S.', 'T.', 'U.', 'V.', 'W.', 'X.', 'Y.', 'Z.';
+
+$check {
+  &::before {
+    color: var(--color-green) !important;
+  }
+
+  &::after {
+    @extend .ico-fa-check:before;
+    color: var(--color-green) !important;
+    animation: fadeIn 0.5s !important;
+  }
+}
+
+$times {
+  &::before {
+    color: var(--color-red) !important;
+  }
+
+  &::after {
+    @extend .ico-fa-times:before;
+    color: var(--color-red) !important;
+    animation: fadeIn 0.5s !important;
+  }
+}
+
+#artDetail ol>li.quiz {
+  margin: 0.625rem 0 !important;
+
+  &::before {
+    display: none;
+  }
+
+  &.ruby::before {
+    top: 0.5rem;
+  }
+
+  >p {
+    margin: 0;
+    cursor: pointer;
+
+    &:first-child::before {
+      content: '[' attr(data-type) ']';
+      font-size: $font-size-smallest;
+      color: var(--grey-4);
+      margin: auto 0.3125rem;
+    }
+  }
+
+  .gap {
+    display: inline-block;
+    min-width: 2.5rem;
+    text-align: center;
+    padding: 0 0.625rem;
+    text-indent: -624.9375rem;
+
+    &::after {
+      display: block;
+      content: '';
+      background: var(--text-color);
+      width: calc(100% + 1.25rem);
+      height: 0.0625rem;
+      margin-bottom: -0.0625rem;
+      margin-left: -0.625rem;
+    }
+  }
+
+  &.show.fill .gap {
+    text-indent: 0rem;
+  }
+
+  &::before, &::after {
+    the-transition();
+  }
+
+  blockquote {
+    display: none;
+
+    .mistake {
+      display: block;
+      border: 0.1875rem dashed var(--grey-4);
+      padding: 0.625rem 1.25rem;
+      background: var(--grey-3);
+      margin: 0.3125rem;
+
+      &::before {
+        display: block;
+        content: '[' attr(data-type) ']';
+        font-size: $font-size-smaller;
+        color: var(--grey-4);
+      }
+    }
+  }
+
+  .note {
+    display: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: inherit;
+    color: unset;
+    font-size: inherit;
+    filter: unset;
+  }
+
+  &.show blockquote, &.show .note {
+    display: block;
+    @extend .slide;
+  }
+
+  ul.options {
+    padding-inline-start: 0.625rem;
+
+    li {
+      &::before {
+        color: var(--color-grey);
+        margin-right: 0.625rem;
+        the-transition();
+        li-nodot();
+      }
+
+      for $ab, $i in $alphabet {
+        &:nth-child({$i+1})::before {
+          content: $ab;
+        }
+      }
+    }
+  }
+
+  >ul.options {
+    li {
+      cursor: pointer;
+
+      &::after {
+        font-family-icons();
+        position: absolute;
+        left: -1.5625rem;
+        top: 0rem;
+      }
+
+      &.right {
+        @extend $check;
+      }
+
+      &.wrong {
+        @extend $times;
+      }
+    }
+  }
+
+  &.show.false, &.show.true {
+    &::before {
+      visibility: hidden;
+    }
+
+    &::after {
+      font-family-icons();
+      position: absolute;
+      left: -1.2rem;
+      top: 0.25rem;
+    }
+  }
+
+  &.show.true {
+    @extend $check;
+  }
+
+  &.show.false {
+    @extend $times;
+  }
+}

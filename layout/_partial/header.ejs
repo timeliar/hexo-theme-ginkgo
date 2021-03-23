@@ -1,10 +1,18 @@
 <nav
-  class="navbar is-fixed-top is-info"
+  class="navbar is-fixed-top is-link"
   role="navigation"
   aria-label="main navigation"
 >
   <div class="navbar-brand">
-    <a class="navbar-item" href="<%- url_for('/') %> "><%- config.title %></a>
+    <a class="navbar-item" href="<%- url_for('/') %> ">
+      <img
+        src="<%- url_for(theme.logo) %>"
+        alt="<%- config.title %>"
+        height="28"
+        class="mr-2"
+      />
+      <b><%- config.title %></b>
+    </a>
     <a
       role="button"
       class="navbar-burger"
@@ -27,14 +35,21 @@
         <%= __('archives') %>
       </a>
       <a
-        class="navbar-item <% if (is_current('links')){ %>is-active<% } %>"
-        href="/links"
+        class="navbar-item <% if (is_current('friends')){ %>is-active<% } %>"
+        href="/friends"
       >
         <%= __('links') %>
       </a>
     </div>
 
-    <div class="navbar-end"></div>
+    <div class="navbar-end">
+      <a class="navbar-item" href="javascript:void(0)">
+        <i class="fas fa-search"></i>
+      </a>
+      <a class="navbar-item" href="javascript:void(0)">
+        <i class="fas fa-comment"></i>
+      </a>
+    </div>
   </div>
 </nav>
 <script>

@@ -1,6 +1,18 @@
 <head>
   <meta charset="utf-8" />
-  <% var title=[]; title.push(__(page.title)); title.push(config.title); %>
+  <% 
+  var title=[];
+  if(is_current('/')){
+    title.push(__('index'));
+  }else if(is_archive()){
+    title.push(__('archives'));
+  }else if(is_current('friends')){
+    title.push(__('friends'));
+  }else{
+    title.push(__(page.title));
+  }
+  title.push(config.title); 
+  %>
   <title><%= title.join(' | ') %></title>
   <% if (config.author){ %>
   <meta name="author" content="<%= config.author %>" />
@@ -37,7 +49,7 @@
   <meta property="og:image" content="<%= config.cover %>" />
   <% } %>
   <!-- favicon -->
-  <%- favicon_tag('favicon.ico') %>
+  <%- favicon_tag(theme.logo) %>
   <!-- rss -->
   <%- feed_tag('atom.xml') %>
   <!-- bulma framework -->
@@ -50,13 +62,104 @@
   %>
   <!-- custom style -->
   <%- css('css/custom.css') %>
+  <!-- custom style -->
+  <%- css('css/extend.css') %>
 
   <!-- prism enable -->
   <% if(config.prismjs.enable) { %>
   <!-- prism theme -->
   <%-
-  css('https://cdn.bootcdn.net/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css')
+  css('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css')
   %>
+  <style>
+    pre {
+      padding: 2rem 1rem 1rem 1rem !important;
+      border-radius: 0.35rem;
+      tab-size: 4;
+    }
+
+    .code-area::after {
+      content: " ";
+      position: absolute;
+      border-radius: 50%;
+      background: #ff5f56;
+      width: 12px;
+      height: 12px;
+      top: 0;
+      left: 12px;
+      margin-top: 12px;
+      -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+      box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    }
+
+    code {
+      padding: 1px 5px;
+      top: 13px !important;
+      font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier,
+        monospace;
+      font-size: 0.91rem;
+      color: #e96900;
+      background-color: #f8f8f8;
+      border-radius: 2px;
+    }
+
+    .code_copy {
+      position: absolute;
+      top: 0.7rem;
+      right: 25px;
+      z-index: 1;
+      filter: invert(50%);
+      cursor: pointer;
+    }
+
+    .codecopy_notice {
+      position: absolute;
+      top: 0.7rem;
+      right: 6px;
+      z-index: 1;
+      filter: invert(50%);
+      opacity: 0;
+    }
+
+    .code_lang {
+      position: absolute;
+      top: 1.2rem;
+      right: 46px;
+      line-height: 0;
+      font-weight: bold;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      z-index: 1;
+      filter: invert(50%);
+      cursor: pointer;
+    }
+
+    .code-expand {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      filter: invert(50%);
+      padding: 7px;
+      z-index: 999 !important;
+      cursor: pointer;
+      transition: all 0.3s;
+      transform: rotate(0deg);
+    }
+
+    .code-closed .code-expand {
+      transform: rotate(-180deg) !important;
+      transition: all 0.3s;
+    }
+
+    .code-closed pre::before {
+      height: 0;
+    }
+
+    pre code {
+      padding: 0;
+      color: #e8eaf6;
+      background-color: #272822;
+    }
+  </style>
   <!-- prism theme end -->
   <% } %>
   <!-- jauery lib -->

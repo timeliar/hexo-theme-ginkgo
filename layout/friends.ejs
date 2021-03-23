@@ -1,0 +1,29 @@
+<% if(site.data && site.data.friends) {%>
+<!-- 遍历Firends -->
+<% site.data.friends.forEach(friend => { %>
+<div
+  class="box is-inline-block mr-1"
+  style="cursor: pointer;min-width: 290px"
+  onclick="window.open('<%- friend.url %>','_blank')"
+>
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="<%- url_for(friend.avatar) %> " alt="<%= friend.name %>" />
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <a href="<%- friend.url %> " id="href">
+            <strong> <%= friend.name %> </strong>
+          </a>
+        </p>
+        <p><%- friend.introduction %></p>
+      </div>
+    </div>
+  </article>
+</div>
+<%});%>
+<!-- 遍历完毕 -->
+<%} %>

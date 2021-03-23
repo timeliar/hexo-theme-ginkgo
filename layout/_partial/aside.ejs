@@ -3,10 +3,7 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <img
-            src="<%- url_for(config.avatar) %>"
-            alt="<%- config.author %>"
-          />
+          <img src="<%- url_for(config.avatar) %>" alt="<%- config.author %>" />
         </figure>
       </div>
       <div class="media-content">
@@ -84,9 +81,24 @@
   <% } else { %>
   <div class="card mt-4">
     <div class="card-content">
+      <progress
+        class="progress is-info"
+        id="tocProgress"
+        value="0"
+        max="100"
+      ></progress>
       <%- toc(page.content,{list_number:true,class:'menu-list'}) %>
     </div>
   </div>
+  <script>
+    $(window).scroll(function () {
+      var s = $(window).scrollTop(),
+        d = $("#post-main-content").height();
+      scrollPercent = (s / d) * 100;
+      var position = scrollPercent;
+      $("#tocProgress").attr("value", position);
+    });
+  </script>
   <div class="card mt-2">
     <div class="card-content">
       <div>

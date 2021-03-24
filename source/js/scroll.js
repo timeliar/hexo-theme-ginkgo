@@ -13,7 +13,7 @@ $(function () {
   }
   $(".menu-list-link").click(function (e) {
     e.preventDefault();
-    let topOffset = $(decodeURIComponent($.attr(this, "href"))).offset().top;
+    let topOffset = $(decodeURIComponent($(this).html())).offset().top;
     scrollAnimate(topOffset - navBarHeight);
   });
 });

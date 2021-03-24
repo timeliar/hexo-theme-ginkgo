@@ -84,20 +84,22 @@
       <progress
         class="progress is-info"
         id="tocProgress"
-        value="0"
         max="100"
       ></progress>
-      <%- toc(page.content,{list_number:true,class:'menu-list'}) %>
+      <%- toc(page.content,{list_number:false,class:'menu-list'}) %>
     </div>
   </div>
   <script>
     $(window).scroll(function () {
-      var s = $(window).scrollTop(),
-        d = $("#post-main-content").height();
-      scrollPercent = (s / d) * 100;
-      var position = scrollPercent;
-      $("#tocProgress").attr("value", position);
+      updatePostProgress();
     });
+    function updatePostProgress() {
+      var ws = $(window).scrollTop(),
+        ch = $("#post-main-content").height(),
+        hn = $("#header-navbar").height(),
+        wh = $(window).height();
+      $("#tocProgress").attr("value", ((ws + wh - hn) / ch) * 100);
+    }
   </script>
   <div class="card mt-2">
     <div class="card-content">

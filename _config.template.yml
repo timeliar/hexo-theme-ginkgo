@@ -4,13 +4,9 @@ social:
   twitter: # twitter page link or false
   about: # about page link or false
 comment:
-  gitalk:
-    enable: false
-    clientId: ##
-    secret: ##
-    repo: ##
-    owner: ##
-  valine:
-    enable: true
-    appId: #
-    appKey: #
+  enable: true
+  backend: waline
+  serverURL: https://timeliar-waline.vercel.app
+  visitor: true
+
+logo: # logo地址，String

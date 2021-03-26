@@ -3,8 +3,11 @@ social:
   github: # github page link or false
   twitter: # twitter page link or false
   about: # about page link or false
+# 评论目前仅支持minivaline
+# 基于安全原因，暂不简易通过直接配置leancloud key&secret的方式
+# 推荐使用vercel来进行
 comment:
-  enable: true
+  enable: true 
   backend: waline
   serverURL: https://timeliar-waline.vercel.app
   visitor: true

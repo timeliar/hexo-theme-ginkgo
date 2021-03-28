@@ -56,7 +56,7 @@
     <div class="card-content">
       <% site.tags.forEach(function(tag) { %>
       <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
-        <span class="icon">
+        <span class="icon mr-1">
           <i class="fas fa-tag"></i>
         </span>
         <%- tag.name %>
@@ -72,7 +72,14 @@
       <div class="menu">
         <ul class="menu-list">
           <% site.categories.forEach(function(cate) { %>
-          <li><a href="<%- url_for(cate.path) %>"> <%- cate.name %> </a></li>
+          <li>
+            <a href="<%- url_for(cate.path) %>">
+              <span class="icon mr-1">
+                <i class="fas fa-archive"></i>
+              </span>
+              <%- cate.name %>
+            </a>
+          </li>
           <% }) %>
         </ul>
       </div>
@@ -81,11 +88,7 @@
   <% } else { %>
   <div class="card mt-4">
     <div class="card-content">
-      <progress
-        class="progress is-info"
-        id="tocProgress"
-        max="100"
-      ></progress>
+      <progress class="progress is-info" id="tocProgress" max="100"></progress>
       <%- toc(page.content,{list_number:false,class:'menu-list'}) %>
     </div>
   </div>

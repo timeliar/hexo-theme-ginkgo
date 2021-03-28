@@ -5,31 +5,14 @@
       <a href="<%- url_for(item.path) %>"> <%- item.title %> </a>
     </p>
     <% if(item.categories && item.categories.length) { %>
-    <div class="dropdown is-right">
-      <div
-        class="card-header-icon dropdown-trigger"
-        trigger-id="<%- item._id %> "
-      >
-        <button
-          class="button is-white"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu3"
-        >
-          <span class="icon is-small">
-            <i class="fas fa-caret-down"></i>
+      <% item.categories.forEach(function(cate) { %>
+        <a href="<%- url_for(cate.path) %>" class="button is-white">
+          <span class="icon mr-1">
+            <i class="fas fa-archive"></i>
           </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" trigger-id="<%- item._id %>" role="menu">
-        <div class="dropdown-content">
-          <% item.categories.forEach(function(cate) { %>
-          <a href="<%- url_for(cate.path) %>" class="dropdown-item">
-            <%- cate.name %>
-          </a>
-          <% }) %>
-        </div>
-      </div>
-    </div>
+          <%- cate.name %>
+        </a>
+        <% }) %>
     <% } %>
   </header>
   <div class="card-content">
@@ -37,11 +20,17 @@
       <%if(item.excerpt) {%> <%- strip_html(item.excerpt) %> <%}%>
       <a href="<%- url_for(item.path) %>">[<%- __('read_more') %>]</a>
     </p>
+  </div>
+  <footer class="card-footer">
+    <button class="button is-white has-text-grey">
+      <time><%- date(item.date,config.date_format) %> </time>
+    </button>
     <% if(item.tags && item.tags.length) { %>
-    <div class="mt-2 is-align-content-end">
+    <div class="button is-white">
+      <!-- 页面设置了标签 -->
       <% item.tags.forEach(function(tag) { %>
       <a href="<%- url_for(tag.path) %>" class="tag is-info icon-text">
-        <span class="icon">
+        <span class="icon mr-1">
           <i class="fas fa-tag"></i>
         </span>
         <%- tag.name %>
@@ -49,11 +38,6 @@
       <% }) %>
     </div>
     <% } %>
-  </div>
-  <footer class="card-footer">
-    <button class="button is-white has-text-grey">
-      <time><%- date(item.date,config.date_format) %> </time>
-    </button>
   </footer>
 </div>
 <% }); %>

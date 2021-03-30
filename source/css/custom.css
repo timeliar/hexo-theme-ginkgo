@@ -60,3 +60,11 @@ ol.menu-list,ol.menu-list-child{
 .v[data-class=v] .vbtn {
   border: 2px solid #bbbbbb !important;
 }
+
+.card-neck {
+  background-color: transparent;
+  align-items: stretch;
+  box-shadow: 0 0.125em 0.25em rgb(10 10 10 / 10%);
+  display: flex;
+  padding: 0.5em;
+}
